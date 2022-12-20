@@ -18,7 +18,7 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
   type,
 }) => {
   const { selectedShow, setSelectedShow } = useShow();
-  const defaultStyle = "relative w-[300px] h-[200px]";
+  const defaultStyle = "relative w-[300px] h-[400px] rounded-2xl";
   const dispatch = useAppDispatch();
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
 
@@ -49,10 +49,20 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
 
   return (
     <button
-      className={isSelected() ? defaultStyle + " scale-110" : defaultStyle}
+      className={
+        isSelected()
+          ? defaultStyle + " border-green-500 border-8"
+          : defaultStyle + " hover:border-8 hover:border-green-200"
+      }
       onClick={() => handleClick()}
     >
-      <Image src={image} alt={`${title} illustration`} fill sizes="1" />
+      <Image
+        src={image}
+        alt={`${title} illustration`}
+        fill
+        sizes="1"
+        className="rounded-lg"
+      />
     </button>
   );
 };
