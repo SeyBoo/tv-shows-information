@@ -26,9 +26,6 @@ const Intro: FunctionComponent = () => {
 
   return (
     <div className="z-50 absolute w-screen h-screen bg-black text-white">
-      <TextAnimation>
-        Hey, please select 5 of your favorite TV shows.
-      </TextAnimation>
       <div className="flex flex-col md:flex-row gap-4 flex-wrap justify-between">
         {popularShows?.map((show, index) => (
           <ZoomInAnimation delay={calculateDelay(index)} key={index}>
