@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { TextAnimation, ZoomInAnimation } from "../common/animations";
 import { ShowCard } from "../module/show/components";
+import { FromTheTopAnimation, ZoomInAnimation } from "../common/animations";
 import { SeasonList } from "../module/season/components/";
 import calculateDelay from "../common/utils/calculateAnimationDelay";
 import { FunctionComponent, useCallback, useEffect } from "react";
@@ -38,6 +38,21 @@ const Intro: FunctionComponent = () => {
           </ZoomInAnimation>
         ))}
       </div>
+      <FromTheTopAnimation startY={-500} duration={2} bounce={0.1}>
+        <h3 className="text-white text-3xl">
+          Hey, select{" "}
+          <strong
+            className="text-transparent bg-clip-text"
+            style={{
+              backgroundImage:
+                "linear-gradient(135deg, #CB5EEE 0%, #4BE1EC 100%)",
+            }}
+          >
+            {numberLeft}
+          </strong>{" "}
+          of your favorite TV shows.
+        </h3>
+      </FromTheTopAnimation>
     </div>
   );
 };
