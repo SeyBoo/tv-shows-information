@@ -1,7 +1,7 @@
 
-# Project Title
+# TV Shows Informations 
 
-Get information about your favorite TV Shows. Thanks to the IMDb api.
+Get informations about your favorite TV Shows. Thanks to the IMDb api.
 
 
 ## Installation
