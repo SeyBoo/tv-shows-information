@@ -3,20 +3,11 @@ import { motion } from "framer-motion";
 
 interface FromTheTopAnimationProps {
   delay?: number;
-  startY?: number;
-  duration?: number;
-  bounce?: number;
 }
 
 export const FromTheTopAnimation: FunctionComponent<
   PropsWithChildren<FromTheTopAnimationProps>
-> = ({
-  delay = 0.25,
-  startY = -100,
-  children,
-  duration = 1.5,
-  bounce = 0.3,
-}) => {
+> = ({ children, delay = 0.25 }) => {
   return (
     <motion.div
       initial="hidden"
@@ -24,13 +15,13 @@ export const FromTheTopAnimation: FunctionComponent<
       viewport={{ once: true }}
       transition={{
         type: "spring",
-        bounce: bounce,
-        duration: duration,
+        bounce: 0.3,
+        duration: 1.6,
         delay: delay,
       }}
       variants={{
         visible: { y: 0, opacity: 1 },
-        hidden: { y: startY, opacity: 0 },
+        hidden: { y: -100, opacity: 0 },
       }}
     >
       {children}
