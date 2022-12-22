@@ -2,8 +2,6 @@ import { ShowI } from "../types/show.interface";
 
 export interface ShowBackend {
   fetchPopularShows: () => Promise<ShowI[]>;
-
-  searchShows: (title: string) => Promise<ShowI[]>;
 }
 
 let showBackendInstance: ShowBackend | undefined;
