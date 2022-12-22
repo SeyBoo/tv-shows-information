@@ -1,26 +1,35 @@
 import { FunctionComponent } from "react";
 import { useShow } from "../../../../common/hooks/useShow";
+import { Season } from "../../types/season.interface";
+import Image from "next/image";
 
 interface SeasonProps {
-  seasonNumber: string;
+  season: Season;
 }
 
-export const SeasonCard: FunctionComponent<SeasonProps> = ({
-  seasonNumber,
-}) => {
-  const { selectedSeason, setSelectedSeason } = useShow();
-  const defaultStyle =
-    "bg-black w-[200px] h-[200px] text-white flex items-center justify-center";
+export const SeasonCard: FunctionComponent<SeasonProps> = ({ season }) => {
+  const { setSelectedSeason, setSelectedScreen } = useShow();
+
+  const handleClick = () => {
+    setSelectedSeason(season.id);
+    setSelectedScreen("episodes");
+  };
+
   return (
     <button
-      className={
-        selectedSeason === seasonNumber
-          ? defaultStyle + " scale-110"
-          : defaultStyle
-      }
-      onClick={() => setSelectedSeason(seasonNumber)}
+      className="relative w-[300px] h-[400px] rounded-2xl flex justify-center items-center hover:border-8 hover:border-green-200"
+      onClick={() => handleClick()}
     >
-      {seasonNumber}
+      <Image
+        src={season.image}
+        alt={`${season.name} illustration`}
+        fill
+        sizes="1"
+        className="rounded-lg"
+      />
+      <p className="text-7xl font-bold text-white absolute">
+        {season.season_number}
+      </p>
     </button>
   );
 };
