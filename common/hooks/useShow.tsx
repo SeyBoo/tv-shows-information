@@ -10,8 +10,8 @@ type ScreenI = "shows" | "seasons" | "episodes" | "episode";
 interface ShowActions {
   setSelectedShow: (value: string) => void;
   selectedShow: string;
-  setSelectedSeason: (value: string) => void;
-  selectedSeason: string;
+  setSelectedSeason: (value: number) => void;
+  selectedSeason: number;
   setSelectedScreen: (value: ScreenI) => void;
   selectedScreen: ScreenI;
 }
@@ -20,7 +20,7 @@ const ShowContext = createContext({} as ShowActions);
 
 const ShowProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const [selectedShow, setSelectedShow] = useState<string>("");
-  const [selectedSeason, setSelectedSeason] = useState<string>("");
+  const [selectedSeason, setSelectedSeason] = useState<number>(0);
   const [selectedScreen, setSelectedScreen] = useState<ScreenI>("shows");
 
   return (
