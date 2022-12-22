@@ -28,12 +28,12 @@ const Intro: FunctionComponent = () => {
           of your favorite TV shows.
         </h3>
         <PopularShowList />
-      </FromTheTopAnimation>
-    </div>
+      </div>
+    </FromTheTopAnimation>
   );
 };
 
-const Application: FunctionComponent = () => {
+const ShowScreen: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
 
   return (
@@ -52,6 +52,47 @@ const Application: FunctionComponent = () => {
   );
 };
 
+const SeasonScreen: FunctionComponent = () => {
+  const selectedShows = useAppSelector((state) => state.shows.selectedShows);
+
+  return (
+    <Grid>
+      {selectedShows?.map((show, index) => (
+        <ZoomInAnimation delay={calculateDelay(index)} key={index}>
+          <ShowCard
+            image={show.image}
+            title={show.title}
+            id={show.id}
+            type="application"
+          />
+        </ZoomInAnimation>
+      ))}
+    </Grid>
+  );
+};
+
+const EpisodesScreen: FunctionComponent = () => {
+  return <div></div>;
+};
+
+const EpisodeScreen: FunctionComponent = () => {
+  return <div></div>;
+};
+
+const Application: FunctionComponent = () => {
+  const { selectedScreen } = useShow();
+
+  if (selectedScreen === "shows") return <ShowScreen />;
+
+  if (selectedScreen === "seasons") return <SeasonScreen />;
+
+  if (selectedScreen === "episodes") return <EpisodesScreen />;
+
+  if (selectedScreen === "episode") return <EpisodeScreen />;
+
+  return null;
+};
+
 export default function Home() {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
   return (
@@ -63,7 +104,11 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <ShowProvider>
-        {selectedShows?.length === 5 ? <Application /> : <Intro />}
+        <main className="bg-black min-h-screen">
+          <div className="max-w-[1660px] m-auto">
+            {selectedShows?.length === 5 ? <Application /> : <Intro />}
+          </div>
+        </main>
       </ShowProvider>
     </>
   );

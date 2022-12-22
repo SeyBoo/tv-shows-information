@@ -17,7 +17,7 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
   id,
   type,
 }) => {
-  const { selectedShow, setSelectedShow } = useShow();
+  const { selectedShow, setSelectedShow, setSelectedScreen } = useShow();
   const defaultStyle = "relative w-[300px] h-[400px] rounded-2xl";
   const dispatch = useAppDispatch();
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
@@ -30,20 +30,22 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
     }
   };
 
-  const handleClick = () => {
-    if (type === "application") {
-      setSelectedShow(id);
-    } else {
-      handleSelectNewShow();
-    }
-  };
-
   const isSelected = (): Boolean => {
     if (type === "application") {
       return selectedShow === id;
     } else {
       const isShowSelected = selectedShows?.filter((show) => show.id === id);
       return Boolean(isShowSelected && isShowSelected?.length > 0);
+    }
+  };
+
+  const handleClick = () => {
+    if (isSelected()) return;
+    if (type === "application") {
+      setSelectedShow(id);
+      setSelectedScreen("seasons");
+    } else {
+      handleSelectNewShow();
     }
   };
 
