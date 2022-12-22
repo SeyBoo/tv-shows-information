@@ -1,19 +1,19 @@
 import Head from "next/head";
 import { FromTheTopAnimation, ZoomInAnimation } from "../common/animations";
 import { PopularShowList, ShowCard } from "../module/show/components";
-import { SeasonList } from "../module/season/components/";
 import calculateDelay from "../common/utils/calculateAnimationDelay";
 import { FunctionComponent } from "react";
 import { useAppSelector } from "../common/hooks/store";
-import ShowProvider from "../common/hooks/useShow";
+import ShowProvider, { useShow } from "../common/hooks/useShow";
+import { Grid } from "../common/components/grid";
 
 const Intro: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
   const numberLeft = selectedShows ? 5 - selectedShows?.length : 5;
 
   return (
-    <div className="flex flex-col bg-black min-h-screen gap-6 p-5">
-      <FromTheTopAnimation startY={-500} duration={2} bounce={0.1}>
+    <FromTheTopAnimation>
+      <div className="flex flex-col gap-6 p-5">
         <h3 className="text-white text-3xl">
           Hey, select{" "}
           <strong
