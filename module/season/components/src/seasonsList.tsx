@@ -2,29 +2,34 @@ import { FromTheTopAnimation } from "../../../../common/animations";
 import { useShow } from "../../../../common/hooks/useShow";
 import { SeasonCard } from "./seasonCard";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
+import { useAppDispatch, useAppSelector } from "../../../../common/hooks/store";
+import { Grid } from "../../../../common/components/grid";
+import { useEffect } from "react";
+import { fetchSeasons } from "../../store/thunk";
 
 export const SeasonList = () => {
   const { selectedShow } = useShow();
+  const seasons = useAppSelector((state) => state.seasons.seasons);
+  const dispatch = useAppDispatch();
 
-  if (!selectedShow) return null;
+  const handleFetchSeasons = async () => {
+    try {
+      await dispatch(fetchSeasons(selectedShow));
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  useEffect(() => {
+    handleFetchSeasons();
+  }, []);
 
   return (
-    <div className="flex justify-between gap-4">
-      <FromTheTopAnimation delay={calculateDelay(1)}>
-        <SeasonCard seasonNumber="1" />
-      </FromTheTopAnimation>
-      <FromTheTopAnimation delay={calculateDelay(2)}>
-        <SeasonCard seasonNumber="2" />
-      </FromTheTopAnimation>
-      <FromTheTopAnimation delay={calculateDelay(3)}>
-        <SeasonCard seasonNumber="3" />
-      </FromTheTopAnimation>
-      <FromTheTopAnimation delay={calculateDelay(4)}>
-        <SeasonCard seasonNumber="4" />
-      </FromTheTopAnimation>
-      <FromTheTopAnimation delay={calculateDelay(5)}>
-        <SeasonCard seasonNumber="5" />
-      </FromTheTopAnimation>
-    </div>
+    <Grid>
+      {seasons?.map((season, index) => (
+        <FromTheTopAnimation delay={calculateDelay(index)} key={index}>
+          <SeasonCard season={season} />
+        </FromTheTopAnimation>
+      ))}
+    </Grid>
   );
 };

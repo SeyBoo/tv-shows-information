@@ -6,6 +6,7 @@ import { FunctionComponent } from "react";
 import { useAppSelector } from "../common/hooks/store";
 import ShowProvider, { useShow } from "../common/hooks/useShow";
 import { Grid } from "../common/components/grid";
+import { SeasonList } from "../module/season/components";
 
 const Intro: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
@@ -53,22 +54,7 @@ const ShowScreen: FunctionComponent = () => {
 };
 
 const SeasonScreen: FunctionComponent = () => {
-  const selectedShows = useAppSelector((state) => state.shows.selectedShows);
-
-  return (
-    <Grid>
-      {selectedShows?.map((show, index) => (
-        <ZoomInAnimation delay={calculateDelay(index)} key={index}>
-          <ShowCard
-            image={show.image}
-            title={show.title}
-            id={show.id}
-            type="application"
-          />
-        </ZoomInAnimation>
-      ))}
-    </Grid>
-  );
+  return <SeasonList />;
 };
 
 const EpisodesScreen: FunctionComponent = () => {
