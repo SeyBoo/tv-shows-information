@@ -16,4 +16,4 @@ export const episodesSlice = createSlice({
   },
 });
 
-export const { setEpisodes: setSeasons } = episodesSlice.actions;
+export const { setEpisodes } = episodesSlice.actions;
