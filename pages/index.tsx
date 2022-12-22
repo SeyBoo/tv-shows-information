@@ -6,7 +6,7 @@ import { FunctionComponent } from "react";
 import { useAppSelector } from "../common/hooks/store";
 import ShowProvider, { useShow } from "../common/hooks/useShow";
 import { Grid } from "../common/components/grid";
-import { SeasonList } from "../module/season/components";
+import { SeasonList } from "../module/seasons/components";
 import { Nav } from "../common/components/nav";
 
 const Intro: FunctionComponent = () => {

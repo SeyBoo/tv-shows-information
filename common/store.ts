@@ -1,5 +1,5 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import { seasonsSlice } from "../module/season/store/slice";
+import { seasonsSlice } from "../module/seasons/store/slice";
 import { showSlice } from "../module/show/store/slice";
 
 const store = configureStore({
