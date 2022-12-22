@@ -8,6 +8,7 @@ import ShowProvider, { useShow } from "../common/hooks/useShow";
 import { Grid } from "../common/components/grid";
 import { SeasonList } from "../module/seasons/components";
 import { Nav } from "../common/components/nav";
+import { EpisodeList } from "../module/episode/components/episodesList";
 
 const Intro: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
@@ -71,7 +72,14 @@ const SeasonScreen: FunctionComponent = () => {
 };
 
 const EpisodesScreen: FunctionComponent = () => {
-  return <div></div>;
+  return (
+    <div className="min-h-screen flex flex-col justify-center">
+      <h1 className="text-white text-2xl p-8 font-semibold">
+        Please select an episode.
+      </h1>
+      <EpisodeList />
+    </div>
+  );
 };
 
 const EpisodeScreen: FunctionComponent = () => {
