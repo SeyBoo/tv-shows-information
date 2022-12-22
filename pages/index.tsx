@@ -39,23 +39,35 @@ const ShowScreen: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
 
   return (
-    <Grid>
-      {selectedShows?.map((show, index) => (
-        <ZoomInAnimation delay={calculateDelay(index)} key={index}>
-          <ShowCard
-            image={show.image}
-            title={show.title}
-            id={show.id}
-            type="application"
-          />
-        </ZoomInAnimation>
-      ))}
-    </Grid>
+    <div className="min-h-screen flex flex-col justify-center">
+      <h1 className="text-white text-2xl p-8 font-semibold">
+        Please select a show you&apos;d like to get information from.
+      </h1>
+      <Grid>
+        {selectedShows?.map((show, index) => (
+          <ZoomInAnimation delay={calculateDelay(index)} key={index}>
+            <ShowCard
+              image={show.image}
+              title={show.title}
+              id={show.id}
+              type="application"
+            />
+          </ZoomInAnimation>
+        ))}
+      </Grid>
+    </div>
   );
 };
 
 const SeasonScreen: FunctionComponent = () => {
-  return <SeasonList />;
+  return (
+    <div className="min-h-screen flex flex-col justify-center">
+      <h1 className="text-white text-2xl p-8 font-semibold">
+        Please select a season.
+      </h1>
+      <SeasonList />
+    </div>
+  );
 };
 
 const EpisodesScreen: FunctionComponent = () => {

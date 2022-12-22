@@ -29,9 +29,11 @@ export const Nav: FunctionComponent = () => {
 
   return (
     <nav className="pt-8 px-8">
-      <button onClick={() => handleGoBack()} className="text-3xl text-white">
-        Go Back
-      </button>
+      {selectedScreen !== "shows" && (
+        <button onClick={() => handleGoBack()} className="text-3xl text-white">
+          Go Back
+        </button>
+      )}
     </nav>
   );
 };
