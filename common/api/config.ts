@@ -1,6 +1,5 @@
 const headers = new Headers();
-headers.append("X-RapidAPI-Key", process.env.NEXT_PUBLIC_API_KEY || "");
-headers.append("X-RapidAPI-Host", process.env.NEXT_PUBLIC_API_HOST || "");
+headers.append("Authorization", `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`);
 
 export const getFromApi = async (
   url: string,
