@@ -1,5 +1,6 @@
 import { FunctionComponent, useCallback, useEffect } from "react";
 import { ZoomInAnimation } from "../../../../common/animations";
+import { Grid } from "../../../../common/components/grid";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks/store";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
 import { fetchPopularShows } from "../../store/thunks";
@@ -22,7 +23,7 @@ export const PopularShowList: FunctionComponent = () => {
   }, [handleFetchPopularShows]);
 
   return (
-    <div className="flex flex-col items-center gap-4 md:flex-row md:flex-wrap md:justify-center">
+    <Grid>
       {popularShows?.map((show, index) => (
         <ZoomInAnimation delay={calculateDelay(index)} key={index}>
           <ShowCard
@@ -33,6 +34,6 @@ export const PopularShowList: FunctionComponent = () => {
           />
         </ZoomInAnimation>
       ))}
-    </div>
+    </Grid>
   );
 };

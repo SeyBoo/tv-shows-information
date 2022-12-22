@@ -37,21 +37,18 @@ const Application: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
 
   return (
-    <main className="max-w-[1660px] m-auto">
-      <div className="flex flex-col md:flex-row gap-4 justify-between">
-        {selectedShows?.map((show, index) => (
-          <ZoomInAnimation delay={calculateDelay(index)} key={index}>
-            <ShowCard
-              image={show.image}
-              title={show.title}
-              id={show.id}
-              type="application"
-            />
-          </ZoomInAnimation>
-        ))}
-      </div>
-      <SeasonList />
-    </main>
+    <Grid>
+      {selectedShows?.map((show, index) => (
+        <ZoomInAnimation delay={calculateDelay(index)} key={index}>
+          <ShowCard
+            image={show.image}
+            title={show.title}
+            id={show.id}
+            type="application"
+          />
+        </ZoomInAnimation>
+      ))}
+    </Grid>
   );
 };
 
