@@ -9,7 +9,7 @@ let seasonBackendInstance: SeasonBackend | undefined;
 export async function getSeasonsBackend(): Promise<SeasonBackend> {
   if (seasonBackendInstance === undefined) {
     const mod = await import(
-      "./backends/" + process.env.NEXT_PUBLIC_SHOWS_BACKEND
+      "./backends/" + process.env.NEXT_PUBLIC_BACKEND_TYPE
     );
     seasonBackendInstance = new mod.default() as SeasonBackend;
   }
