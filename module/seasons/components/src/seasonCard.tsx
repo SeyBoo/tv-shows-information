@@ -11,7 +11,7 @@ export const SeasonCard: FunctionComponent<SeasonProps> = ({ season }) => {
   const { setSelectedSeason, setSelectedScreen } = useShow();
 
   const handleClick = () => {
-    setSelectedSeason(season.id);
+    setSelectedSeason(season.season_number);
     setSelectedScreen("episodes");
   };
 
