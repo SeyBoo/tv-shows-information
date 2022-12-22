@@ -7,6 +7,7 @@ import { useAppSelector } from "../common/hooks/store";
 import ShowProvider, { useShow } from "../common/hooks/useShow";
 import { Grid } from "../common/components/grid";
 import { SeasonList } from "../module/season/components";
+import { Nav } from "../common/components/nav";
 
 const Intro: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
@@ -68,15 +69,15 @@ const EpisodeScreen: FunctionComponent = () => {
 const Application: FunctionComponent = () => {
   const { selectedScreen } = useShow();
 
-  if (selectedScreen === "shows") return <ShowScreen />;
-
-  if (selectedScreen === "seasons") return <SeasonScreen />;
-
-  if (selectedScreen === "episodes") return <EpisodesScreen />;
-
-  if (selectedScreen === "episode") return <EpisodeScreen />;
-
-  return null;
+  return (
+    <div>
+      <Nav />
+      {selectedScreen === "shows" && <ShowScreen />}
+      {selectedScreen === "seasons" && <SeasonScreen />}
+      {selectedScreen === "episodes" && <EpisodesScreen />}
+      {selectedScreen === "episode" && <EpisodeScreen />}
+    </div>
+  );
 };
 
 export default function Home() {
