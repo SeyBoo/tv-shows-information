@@ -3,7 +3,7 @@ export interface Episode {
   title: string;
   episodeNumber: number;
   id: number;
-  overview: string;
+  overview: string | null;
   runtime: number;
 }
 
