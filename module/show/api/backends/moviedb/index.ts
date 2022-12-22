@@ -3,7 +3,7 @@ import { getFromApi } from "../../../../../common/api/config";
 import { ShowI } from "../../../types/show.interface";
 import { ShowDetailsReponse, ShowResponse } from "./schema";
 
-export default class DummyShows implements ShowBackend {
+export default class MovieDBBackend implements ShowBackend {
   formatShow(show: ShowResponse): ShowI {
     const imagePathUrl = "http://image.tmdb.org/t/p/w500";
 
