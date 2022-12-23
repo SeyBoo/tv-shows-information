@@ -3,7 +3,7 @@ import { FromTheTopAnimation } from "../../../../common/animations";
 import { useAppSelector } from "../../../../common/hooks/store";
 import { PopularShowList } from "../../components";
 
-export const SelectedShowScreen: FunctionComponent = () => {
+export const SelectShowScreen: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
   const numberLeft = selectedShows ? 5 - selectedShows?.length : 5;
 

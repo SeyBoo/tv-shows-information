@@ -5,7 +5,7 @@ import { useAppSelector } from "../../../../common/hooks/store";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
 import { ShowCard } from "../../components";
 
-export const SelectShowScreen: FunctionComponent = () => {
+export const SelectedShowScreen: FunctionComponent = () => {
   const selectedShows = useAppSelector((state) => state.shows.selectedShows);
 
   return (
