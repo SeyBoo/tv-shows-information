@@ -1,13 +1,11 @@
 import { FunctionComponent } from "react";
+import { BaseLayout } from "../../../../common/layouts";
 import { SeasonList } from "../../components";
 
 export const SeasonScreen: FunctionComponent = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center">
-      <h1 className="text-white text-2xl p-8 font-semibold">
-        Please select a season.
-      </h1>
+    <BaseLayout title="Please select a season.">
       <SeasonList />
-    </div>
+    </BaseLayout>
   );
 };
