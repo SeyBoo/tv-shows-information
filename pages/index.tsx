@@ -8,7 +8,7 @@ import ShowProvider, { useShow } from "../common/hooks/useShow";
 import { Grid } from "../common/components/grid";
 import { SeasonList } from "../module/seasons/components";
 import { Nav } from "../common/components/nav";
-import { EpisodeList } from "../module/episode/components/episodesList";
+import { EpisodeList } from "../module/episode/components";
 import Image from "next/image";
 
 const Intro: FunctionComponent = () => {

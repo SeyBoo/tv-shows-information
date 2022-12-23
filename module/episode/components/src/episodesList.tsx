@@ -1,16 +1,16 @@
 import { FunctionComponent, useCallback, useEffect } from "react";
-import { ZoomInAnimation } from "../../../common/animations";
-import { Grid } from "../../../common/components/grid";
-import { useAppDispatch, useAppSelector } from "../../../common/hooks/store";
-import { useShow } from "../../../common/hooks/useShow";
-import calculateDelay from "../../../common/utils/calculateAnimationDelay";
-import { fetchEpisodes } from "../state/thunks";
+import { ZoomInAnimation } from "../../../../common/animations";
+import { Grid } from "../../../../common/components/grid";
+import { useAppDispatch, useAppSelector } from "../../../../common/hooks/store";
+import { useShow } from "../../../../common/hooks/useShow";
+import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
+import { fetchEpisodes } from "../../state/thunks";
 import { EpisodeCard } from "./episodeCard";
 
 export const EpisodeList: FunctionComponent = () => {
   const episodes = useAppSelector((state) => state.episodes.episodes);
   const { selectedSeasonNumber, selectedShow } = useShow();
-  
+
   const dispatch = useAppDispatch();
 
   const handleFetchEpisodes = useCallback(async () => {

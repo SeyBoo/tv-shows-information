@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
-import { Episode } from "../types/episode.interface";
+import { Episode } from "../../types/episode.interface";
 import Image from "next/image";
-import { useShow } from "../../../common/hooks/useShow";
+import { useShow } from "../../../../common/hooks/useShow";
 
 interface EpisodeCardProps {
   episode: Episode;
