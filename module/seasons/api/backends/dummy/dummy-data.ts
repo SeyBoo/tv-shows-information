@@ -1,4 +1,4 @@
-import { Season } from "../../types/season.interface";
+import { Season } from "../../../types/season.interface";
 
 export const DummySeasonData: Season[] = [
   {

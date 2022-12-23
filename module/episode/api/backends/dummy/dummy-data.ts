@@ -1,4 +1,4 @@
-import { Episode } from "../../types/episode.interface";
+import { Episode } from "../../../types/episode.interface";
 
 export const DummyEpisodesData: Episode[] = [
   {

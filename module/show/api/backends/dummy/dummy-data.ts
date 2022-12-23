@@ -1,4 +1,4 @@
-import { ShowI } from "../../types/show.interface";
+import { ShowI } from "../../../types/show.interface";
 
 const DummyShowsData: ShowI[] = [
   {
