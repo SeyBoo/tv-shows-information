@@ -8,17 +8,17 @@ interface SeasonProps {
 }
 
 export const SeasonCard: FunctionComponent<SeasonProps> = ({ season }) => {
-  const { setSelectedSeason, setSelectedScreen } = useShow();
+  const { setSelectedSeasonNumber, setSelectedScreen } = useShow();
 
-  const handleClick = () => {
-    setSelectedSeason(season.season_number);
+  const handleSelectSeason = () => {
+    setSelectedSeasonNumber(season.season_number);
     setSelectedScreen("episodes");
   };
 
   return (
     <button
       className="relative w-[300px] h-[400px] rounded-2xl flex justify-center items-center hover:border-8 hover:border-green-200"
-      onClick={() => handleClick()}
+      onClick={() => handleSelectSeason()}
     >
       <Image
         src={season.image}

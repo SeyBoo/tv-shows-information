@@ -9,8 +9,8 @@ import { EpisodeCard } from "./episodeCard";
 
 export const EpisodeList: FunctionComponent = () => {
   const episodes = useAppSelector((state) => state.episodes.episodes);
-
-  const { selectedSeason, selectedShow } = useShow();
+  const { selectedSeasonNumber, selectedShow } = useShow();
+  
   const dispatch = useAppDispatch();
 
   const handleFetchEpisodes = useCallback(async () => {
@@ -18,13 +18,13 @@ export const EpisodeList: FunctionComponent = () => {
       await dispatch(
         fetchEpisodes({
           movieId: parseInt(selectedShow),
-          seasonNumber: selectedSeason,
+          seasonNumber: selectedSeasonNumber,
         })
       );
     } catch (e) {
       console.log(e);
     }
-  }, [dispatch, selectedSeason, selectedShow]);
+  }, [dispatch, selectedSeasonNumber, selectedShow]);
 
   useEffect(() => {
     handleFetchEpisodes();

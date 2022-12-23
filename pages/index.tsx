@@ -84,10 +84,10 @@ const EpisodesScreen: FunctionComponent = () => {
 };
 
 const EpisodeScreen: FunctionComponent = () => {
-  const { selectedEpisode } = useShow();
+  const { selectedEpisodeNumber } = useShow();
   const episodes = useAppSelector((state) => state.episodes.episodes);
   const episode = episodes?.filter(
-    (episode) => episode.episodeNumber === selectedEpisode
+    (episode) => episode.episodeNumber === selectedEpisodeNumber
   );
 
   if (!episode) return null;

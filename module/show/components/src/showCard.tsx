@@ -30,6 +30,11 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
     }
   };
 
+  const handleSelectShow = () => {
+    setSelectedShow(id);
+    setSelectedScreen("seasons");
+  };
+
   const isSelected = (): Boolean => {
     if (type === "application") {
       return selectedShow === id;
@@ -41,9 +46,9 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
 
   const handleClick = () => {
     if (isSelected()) return;
+
     if (type === "application") {
-      setSelectedShow(id);
-      setSelectedScreen("seasons");
+      handleSelectShow();
     } else {
       handleSelectNewShow();
     }

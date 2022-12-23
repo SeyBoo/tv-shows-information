@@ -10,17 +10,17 @@ interface EpisodeCardProps {
 export const EpisodeCard: FunctionComponent<EpisodeCardProps> = ({
   episode,
 }) => {
-  const { setSelectedScreen, setSelectedEpisode } = useShow();
+  const { setSelectedScreen, setSelectedEpisodeNumber } = useShow();
 
-  const handleClick = () => {
+  const handleSelectEpisode = () => {
     setSelectedScreen("episode");
-    setSelectedEpisode(episode.episodeNumber);
+    setSelectedEpisodeNumber(episode.episodeNumber);
   };
 
   return (
     <button
       className="relative w-[300px] h-[400px] rounded-2xl hover:border-8 hover:border-green-200"
-      onClick={() => handleClick()}
+      onClick={() => handleSelectEpisode()}
     >
       <Image
         src={episode.image}

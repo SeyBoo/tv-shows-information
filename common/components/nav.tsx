@@ -5,7 +5,7 @@ export const Nav: FunctionComponent = () => {
   const {
     selectedScreen,
     setSelectedScreen,
-    setSelectedSeason,
+    setSelectedSeasonNumber,
     setSelectedShow,
   } = useShow();
 
@@ -16,7 +16,7 @@ export const Nav: FunctionComponent = () => {
         break;
       case "episodes":
         setSelectedScreen("seasons");
-        setSelectedSeason(0);
+        setSelectedSeasonNumber(0);
         break;
       case "seasons":
         setSelectedScreen("shows");
