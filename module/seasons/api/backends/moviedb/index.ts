@@ -1,6 +1,7 @@
 import { SeasonBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
 import { Season } from "../../../types/season.interface";
+import { SeasonsApiRoutes } from "../../seasons.enum";
 import { MovieDetailsResponse, SeasonReponse } from "./schema";
 
 export default class MovieDBSeason implements SeasonBackend {
@@ -16,7 +17,9 @@ export default class MovieDBSeason implements SeasonBackend {
   }
 
   async fetchSeasons(showId: string): Promise<Season[]> {
-    const data: MovieDetailsResponse = await getFromApi(`/tv/${showId}`);
+    const data: MovieDetailsResponse = await getFromApi(
+      `${SeasonsApiRoutes.GET_SEASONS}${showId}`
+    );
 
     const formatedSeasons: Season[] = await Promise.all(
       data.seasons.map((season) => this.formatSeason(season))
