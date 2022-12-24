@@ -1,11 +1,9 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import { episodesSlice } from "../module/episode/state/slice";
 import { showSlice } from "../module/show/store/slice";
 
 const store = configureStore({
   reducer: {
     [showSlice.name]: showSlice.reducer,
-    [episodesSlice.name]: episodesSlice.reducer,
   },
 });
 
