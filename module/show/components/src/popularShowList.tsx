@@ -12,12 +12,7 @@ export const PopularShowList: FunctionComponent = () => {
     <Grid>
       {data?.map((show, index) => (
         <ZoomInAnimation delay={calculateDelay(index)} key={index}>
-          <ShowCard
-            image={show.image}
-            title={show.title}
-            id={show.id}
-            type="intro"
-          />
+          <ShowCard show={show} type="intro" />
         </ZoomInAnimation>
       ))}
     </Grid>

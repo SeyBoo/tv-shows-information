@@ -3,20 +3,14 @@ import Image from "next/image";
 import { useShow } from "../../../../common/hooks/useShow";
 import { useAppDispatch, useAppSelector } from "../../../../common/hooks/store";
 import { selectNewShow } from "../../store/thunks";
+import { ShowI } from "../../types/show.interface";
 
 interface ShowCardProps {
-  image: string;
-  title: string;
-  id: number;
   type: "intro" | "application";
+  show: ShowI;
 }
 
-export const ShowCard: FunctionComponent<ShowCardProps> = ({
-  image,
-  title,
-  id,
-  type,
-}) => {
+export const ShowCard: FunctionComponent<ShowCardProps> = ({ type, show }) => {
   const { selectedShow, setSelectedShow, setSelectedScreen } = useShow();
   const defaultStyle = "relative w-[300px] h-[400px] rounded-2xl";
   const dispatch = useAppDispatch();
@@ -24,7 +18,11 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
 
   const handleSelectNewShow = async () => {
     try {
-      await dispatch(selectNewShow({ show: { image, title, id } }));
+      await dispatch(
+        selectNewShow({
+          show: { image: show.image, title: show.title, id: show.id },
+        })
+      );
     } catch (e) {
       console.log(e);
     }
@@ -32,17 +30,19 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
 
   const handleSelectShow = () => {
     setSelectedShow({
-      id,
-      title,
+      id: show.id,
+      title: show.title,
     });
     setSelectedScreen("seasons");
   };
 
   const isSelected = (): Boolean => {
     if (type === "application") {
-      return selectedShow.id === id;
+      return selectedShow.id === show.id;
     } else {
-      const isShowSelected = selectedShows?.filter((show) => show.id === id);
+      const isShowSelected = selectedShows?.filter(
+        (show) => show.id === show.id
+      );
       return Boolean(isShowSelected && isShowSelected?.length > 0);
     }
   };
@@ -67,8 +67,8 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
       onClick={() => handleClick()}
     >
       <Image
-        src={image}
-        alt={`${title} illustration`}
+        src={show.image}
+        alt={`${show.title} illustration`}
         fill
         sizes="1"
         className="rounded-lg"

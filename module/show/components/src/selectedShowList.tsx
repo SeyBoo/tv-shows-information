@@ -11,12 +11,7 @@ export const SelectedShowList: FunctionComponent = () => {
     <Grid>
       {selectedShows?.map((show, index) => (
         <ZoomInAnimation delay={calculateDelay(index)} key={index}>
-          <ShowCard
-            image={show.image}
-            title={show.title}
-            id={show.id}
-            type="application"
-          />
+          <ShowCard show={show} type="application" />
         </ZoomInAnimation>
       ))}
     </Grid>
