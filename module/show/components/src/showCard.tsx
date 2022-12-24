@@ -58,7 +58,7 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
     <button
       className={
         isSelected()
-          ? defaultStyle + " border-green-500 border-8"
+          ? defaultStyle + " border-green-500 border-8 filter grayscale"
           : defaultStyle + " hover:border-8 hover:border-green-200"
       }
       onClick={() => handleClick()}
