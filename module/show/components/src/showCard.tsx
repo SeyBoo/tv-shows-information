@@ -20,7 +20,7 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({ type, show }) => {
     try {
       await dispatch(
         selectNewShow({
-          show: { image: show.image, title: show.title, id: show.id },
+          show,
         })
       );
     } catch (e) {
@@ -41,7 +41,7 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({ type, show }) => {
       return selectedShow.id === show.id;
     } else {
       const isShowSelected = selectedShows?.filter(
-        (show) => show.id === show.id
+        (selectedShow) => selectedShow.id === show.id
       );
       return Boolean(isShowSelected && isShowSelected?.length > 0);
     }
