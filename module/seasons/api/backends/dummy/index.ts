@@ -1,4 +1,4 @@
-import { SeasonBackend } from "../..";
+import { SeasonBackend } from "..";
 import { Season } from "../../../types/season.interface";
 import { DummySeasonData } from "./dummy-data";
 

@@ -1,4 +1,4 @@
-import { SeasonBackend } from "../..";
+import { SeasonBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
 import { Season } from "../../../types/season.interface";
 import { MovieDetailsResponse, SeasonReponse } from "./schema";
