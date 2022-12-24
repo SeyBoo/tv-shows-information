@@ -1,4 +1,4 @@
-import { EpisodesBackend } from "../..";
+import { EpisodesBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
 import { Episode, FetchEpisodesProps } from "../../../types/episode.interface";
 import { EpisodeApiResponse, EpisodesApiResponse } from "./schema";
