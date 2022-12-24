@@ -2,6 +2,7 @@ import { ShowBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
 import { ShowI } from "../../../types/show.interface";
 import { ShowDetailsReponse, ShowResponse } from "./schema";
+import { ShowApiRoutes } from "../../show.enum";
 
 export default class MovieDBBackend implements ShowBackend {
   formatShow(show: ShowResponse): ShowI {
@@ -15,7 +16,9 @@ export default class MovieDBBackend implements ShowBackend {
   }
 
   async fetchPopularShows(): Promise<ShowI[]> {
-    const data: ShowDetailsReponse = await getFromApi("discover/tv");
+    const data: ShowDetailsReponse = await getFromApi(
+      ShowApiRoutes.GET_POPULAR_SHOWS
+    );
 
     const formatedShows: ShowI[] = await Promise.all(
       data.results.map((show) => this.formatShow(show))
