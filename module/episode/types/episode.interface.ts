@@ -11,3 +11,9 @@ export interface FetchEpisodesProps {
   movieId: number;
   seasonNumber: number;
 }
+
+export interface FetchEpisodeProps {
+  movieId: number;
+  seasonNumber: number;
+  episodeNumber: number;
+}

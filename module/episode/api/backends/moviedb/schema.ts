@@ -53,3 +53,17 @@ export interface EpisodesApiResponse {
   poster_path: string;
   season_number: number;
 }
+
+export interface EpisodeApiResponse {
+  air_date: string;
+  crew: CrewMember[];
+  name: string;
+  overview: string;
+  id: number;
+  production_code: string;
+  runtime: number;
+  season_number: number;
+  still_path: string;
+  vote_average: number;
+  vote_count: number;
+}

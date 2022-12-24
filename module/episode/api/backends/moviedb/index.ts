@@ -1,6 +1,10 @@
 import { EpisodesBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
-import { Episode, FetchEpisodesProps } from "../../../types/episode.interface";
+import {
+  Episode,
+  FetchEpisodeProps,
+  FetchEpisodesProps,
+} from "../../../types/episode.interface";
 import { EpisodeApiResponse, EpisodesApiResponse } from "./schema";
 
 export default class MovieDBEpisodesBackend implements EpisodesBackend {
@@ -30,5 +34,19 @@ export default class MovieDBEpisodesBackend implements EpisodesBackend {
     );
 
     return formatedSeasons;
+  }
+
+  async fetchEpisode({
+    episodeNumber,
+    movieId,
+    seasonNumber,
+  }: FetchEpisodeProps): Promise<Episode> {
+    const data: EpisodeApiResponse = await getFromApi(
+      `tv/${movieId}/season/${seasonNumber}/episode/${episodeNumber}`
+    );
+
+    const formatedEpisode: Episode = await this.formatSeason(data);
+
+    return formatedEpisode;
   }
 }
