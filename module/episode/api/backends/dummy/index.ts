@@ -1,5 +1,9 @@
-import { FetchEpisodesProps, Episode } from "../../../types/episode.interface";
 import { EpisodesBackend } from "..";
+import {
+  FetchEpisodesProps,
+  Episode,
+  FetchEpisodeProps,
+} from "../../../types/episode.interface";
 import { DummyEpisodesData } from "./dummy-data";
 
 export default class DummyEpisodesBackend implements EpisodesBackend {
@@ -8,5 +12,13 @@ export default class DummyEpisodesBackend implements EpisodesBackend {
     seasonNumber,
   }: FetchEpisodesProps): Promise<Episode[]> {
     return DummyEpisodesData;
+  }
+
+  async fetchEpisode({
+    movieId,
+    seasonNumber,
+    episodeNumber,
+  }: FetchEpisodeProps): Promise<Episode> {
+    return DummyEpisodesData[episodeNumber];
   }
 }
