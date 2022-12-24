@@ -1,38 +1,21 @@
-import { FunctionComponent, useCallback, useEffect } from "react";
+import { FunctionComponent } from "react";
 import { ZoomInAnimation } from "../../../../common/animations";
 import { Grid } from "../../../../common/components/grid";
-import { useAppDispatch, useAppSelector } from "../../../../common/hooks/store";
 import { useShow } from "../../../../common/hooks/useShow";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
-import { fetchEpisodes } from "../../state/thunks";
+import { useGetEpisodes } from "../../api/episode.api";
 import { EpisodeCard } from "./episodeCard";
 
 export const EpisodeList: FunctionComponent = () => {
-  const episodes = useAppSelector((state) => state.episodes.episodes);
   const { selectedSeasonNumber, selectedShow } = useShow();
-
-  const dispatch = useAppDispatch();
-
-  const handleFetchEpisodes = useCallback(async () => {
-    try {
-      await dispatch(
-        fetchEpisodes({
-          movieId: parseInt(selectedShow),
-          seasonNumber: selectedSeasonNumber,
-        })
-      );
-    } catch (e) {
-      console.log(e);
-    }
-  }, [dispatch, selectedSeasonNumber, selectedShow]);
-
-  useEffect(() => {
-    handleFetchEpisodes();
-  }, [handleFetchEpisodes]);
+  const { data } = useGetEpisodes({
+    movieId: parseInt(selectedShow),
+    seasonNumber: selectedSeasonNumber,
+  });
 
   return (
     <Grid>
-      {episodes?.map((episode, index) => (
+      {data?.map((episode, index) => (
         <ZoomInAnimation delay={calculateDelay(index)} key={index}>
           <EpisodeCard episode={episode} />
         </ZoomInAnimation>
