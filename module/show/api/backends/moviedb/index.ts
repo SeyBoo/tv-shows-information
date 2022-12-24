@@ -1,4 +1,4 @@
-import { ShowBackend } from "../..";
+import { ShowBackend } from "..";
 import { getFromApi } from "../../../../../common/api/config";
 import { ShowI } from "../../../types/show.interface";
 import { ShowDetailsReponse, ShowResponse } from "./schema";

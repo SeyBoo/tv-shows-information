@@ -1,4 +1,4 @@
-import { ShowBackend } from "../../";
+import { ShowBackend } from "..";
 import { ShowI } from "../../../types/show.interface";
 import DummyShowsData from "./dummy-data";
 

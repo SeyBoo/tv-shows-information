@@ -1,5 +1,5 @@
 import { AppThunk } from "../../../common/store";
-import { getShowsBackend } from "../api";
+import { getShowsBackend } from "../api/backends";
 import { ShowI } from "../types/show.interface";
 import { addNewShow, setPopularShows } from "./slice";
 
