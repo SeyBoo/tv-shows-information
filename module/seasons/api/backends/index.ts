@@ -1,7 +1,7 @@
 import { Season } from "../../types/season.interface";
 
 export interface SeasonBackend {
-  fetchSeasons: (showId: string) => Promise<Season[]>;
+  fetchSeasons: (showId: number) => Promise<Season[]>;
 }
 
 let seasonBackendInstance: SeasonBackend | undefined;

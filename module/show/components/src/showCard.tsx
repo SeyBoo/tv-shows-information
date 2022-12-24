@@ -7,7 +7,7 @@ import { selectNewShow } from "../../store/thunks";
 interface ShowCardProps {
   image: string;
   title: string;
-  id: string;
+  id: number;
   type: "intro" | "application";
 }
 
@@ -31,13 +31,16 @@ export const ShowCard: FunctionComponent<ShowCardProps> = ({
   };
 
   const handleSelectShow = () => {
-    setSelectedShow(id);
+    setSelectedShow({
+      id,
+      title,
+    });
     setSelectedScreen("seasons");
   };
 
   const isSelected = (): Boolean => {
     if (type === "application") {
-      return selectedShow === id;
+      return selectedShow.id === id;
     } else {
       const isShowSelected = selectedShows?.filter((show) => show.id === id);
       return Boolean(isShowSelected && isShowSelected?.length > 0);

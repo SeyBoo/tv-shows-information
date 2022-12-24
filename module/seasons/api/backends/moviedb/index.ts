@@ -16,7 +16,7 @@ export default class MovieDBSeason implements SeasonBackend {
     };
   }
 
-  async fetchSeasons(showId: string): Promise<Season[]> {
+  async fetchSeasons(showId: number): Promise<Season[]> {
     const data: MovieDetailsResponse = await getFromApi(
       `${SeasonsApiRoutes.GET_SEASONS}${showId}`
     );

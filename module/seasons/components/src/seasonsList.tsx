@@ -7,7 +7,7 @@ import { useGetSeasons } from "../../api/seasons.api";
 
 export const SeasonList = () => {
   const { selectedShow } = useShow();
-  const { data } = useGetSeasons(selectedShow);
+  const { data } = useGetSeasons(selectedShow.id);
 
   return (
     <Grid>

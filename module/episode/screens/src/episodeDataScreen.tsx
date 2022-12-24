@@ -10,7 +10,7 @@ export const EpisodeDataScreen: FunctionComponent = () => {
   const { data } = useGetEpisode({
     seasonNumber: selectedSeasonNumber,
     episodeNumber: selectedEpisodeNumber,
-    movieId: parseInt(selectedShow),
+    movieId: selectedShow.id,
   });
 
   if (!data) return null;

@@ -3,7 +3,7 @@ import { getSeasonsBackend } from "./backends";
 import { Season } from "../types/season.interface";
 import { SeasonsApiRoutes } from "./seasons.enum";
 
-export const useGetSeasons = (showId: string): UseQueryResult<Season[]> => {
+export const useGetSeasons = (showId: number): UseQueryResult<Season[]> => {
   const getSeasons = async (): Promise<Season[]> => {
     const seasonsBackend = await getSeasonsBackend();
     const data = await seasonsBackend.fetchSeasons(showId);

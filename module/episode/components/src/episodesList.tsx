@@ -9,7 +9,7 @@ import { EpisodeCard } from "./episodeCard";
 export const EpisodeList: FunctionComponent = () => {
   const { selectedSeasonNumber, selectedShow } = useShow();
   const { data } = useGetEpisodes({
-    movieId: parseInt(selectedShow),
+    movieId: selectedShow.id,
     seasonNumber: selectedSeasonNumber,
   });
 
