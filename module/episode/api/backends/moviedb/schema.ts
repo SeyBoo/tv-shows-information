@@ -1,4 +1,4 @@
-interface CrewMember {
+export interface CrewMember {
   job: string;
   department: string;
   credit_id: string;
@@ -12,7 +12,7 @@ interface CrewMember {
   profile_path: string;
 }
 
-interface Guest {
+export interface Guest {
   character: string;
   credit_id: string;
   order: number;

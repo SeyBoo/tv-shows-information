@@ -1,3 +1,11 @@
+export interface Member {
+  job: string;
+  id: number;
+  name: string;
+  image: string | null;
+  character?: string;
+}
+
 export interface Episode {
   image: string | null;
   title: string;
@@ -5,6 +13,8 @@ export interface Episode {
   id: number;
   overview: string;
   runtime: number | null;
+  crew: Member[];
+  guest_stars: Member[];
 }
 
 export interface FetchEpisodesProps {

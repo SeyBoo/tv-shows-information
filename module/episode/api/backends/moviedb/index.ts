@@ -4,10 +4,47 @@ import {
   Episode,
   FetchEpisodeProps,
   FetchEpisodesProps,
+  Member,
 } from "../../../types/episode.interface";
-import { EpisodeApiResponse, EpisodesApiResponse } from "./schema";
+import {
+  CrewMember,
+  EpisodeApiResponse,
+  EpisodesApiResponse,
+  Guest,
+} from "./schema";
 
 export default class MovieDBEpisodesBackend implements EpisodesBackend {
+  async formatCrew(crew: CrewMember[]): Promise<Member[]> {
+    const imagePathUrl = "http://image.tmdb.org/t/p/w500";
+
+    const formatedCrew: Member[] = await Promise.all(
+      crew.map((member) => ({
+        job: member.job,
+        id: member.id,
+        image: member.profile_path ? imagePathUrl + member.profile_path : null,
+        name: member.name,
+      }))
+    );
+
+    return formatedCrew;
+  }
+
+  async formatedGuest(guests: Guest[]): Promise<Member[]> {
+    const imagePathUrl = "http://image.tmdb.org/t/p/w500";
+
+    const formatedGuests: Member[] = await Promise.all(
+      guests.map((guest) => ({
+        job: "Actor",
+        id: guest.id,
+        image: guest.profile_path ? imagePathUrl + guest.profile_path : null,
+        name: guest.name,
+        character: guest.character,
+      }))
+    );
+
+    return formatedGuests;
+  }
+
   async formatSeason(episode: EpisodeApiResponse): Promise<Episode> {
     const imagePathUrl = "http://image.tmdb.org/t/p/w500";
 
@@ -18,6 +55,8 @@ export default class MovieDBEpisodesBackend implements EpisodesBackend {
       episodeNumber: episode.episode_number,
       overview: episode.overview,
       runtime: episode.runtime,
+      crew: await this.formatCrew(episode.crew),
+      guest_stars: await this.formatedGuest(episode.guest_stars),
     };
   }
 

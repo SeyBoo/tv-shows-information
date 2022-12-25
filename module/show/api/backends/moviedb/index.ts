@@ -9,7 +9,7 @@ export default class MovieDBBackend implements ShowBackend {
     const imagePathUrl = "http://image.tmdb.org/t/p/w500";
 
     return {
-      id: show.id.toString(),
+      id: show.id,
       image: imagePathUrl + show.poster_path,
       title: show.name,
     };

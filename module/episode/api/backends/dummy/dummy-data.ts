@@ -8,6 +8,8 @@ export const DummyEpisodesData: Episode[] = [
     overview: "Overview of an episode",
     runtime: 30,
     title: "Title 1",
+    crew: [],
+    guest_stars: [],
   },
   {
     episodeNumber: 2,
@@ -16,6 +18,8 @@ export const DummyEpisodesData: Episode[] = [
     overview: "Overview of an episode",
     runtime: 30,
     title: "Title 2",
+    crew: [],
+    guest_stars: [],
   },
   {
     episodeNumber: 3,
@@ -24,5 +28,7 @@ export const DummyEpisodesData: Episode[] = [
     overview: "Overview of an episode",
     runtime: 30,
     title: "Title 2",
+    crew: [],
+    guest_stars: [],
   },
 ];
