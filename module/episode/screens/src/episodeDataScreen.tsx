@@ -1,8 +1,13 @@
 import Image from "next/image";
-import { FunctionComponent } from "react";
-import { TextSkeleton } from "../../../../common/components";
+import { FunctionComponent, PropsWithChildren } from "react";
+import {
+  Grid,
+  ImageSkeleton,
+  TextSkeleton,
+} from "../../../../common/components";
 import { useShow } from "../../../../common/hooks/useShow";
 import { useGetEpisode } from "../../api/episode.api";
+import { MemberCard } from "./memberCard";
 
 export const EpisodeDataScreen: FunctionComponent = () => {
   const { selectedSeasonNumber, selectedShow, selectedEpisodeNumber } =
@@ -13,35 +18,91 @@ export const EpisodeDataScreen: FunctionComponent = () => {
     movieId: selectedShow.id,
   });
 
-  if (!data) return null;
+  const renderImage = (
+    image: string | null | undefined,
+    title: string | undefined
+  ) => {
+    if (image && title)
+      return (
+        <div className="relative w-[100%] h-[400px]">
+          <Image src={image} alt={title} fill sizes="1" />
+        </div>
+      );
+    else
+      return (
+        <div className="flex justify-center">
+          <ImageSkeleton />
+        </div>
+      );
+  };
+
+  type RenderTextType = "heading" | "minutes";
+  interface RenderCorrectTagProps {
+    textType: RenderTextType | undefined;
+  }
+
+  const RenderCorrectTag: FunctionComponent<
+    PropsWithChildren<RenderCorrectTagProps>
+  > = ({ children, textType }) => {
+    if (textType === "heading") {
+      return <h1 className="text-2xl font-semibold">{children}</h1>;
+    }
+
+    if (textType === "minutes") {
+      return <p>{children} minutes</p>;
+    }
+
+    return <p>{children}</p>;
+  };
+
+  const renderText = (
+    text: string | number | null | undefined,
+    data?: RenderTextType
+  ) => {
+    if (text && text !== "") {
+      return <RenderCorrectTag textType={data}>{text}</RenderCorrectTag>;
+    } else {
+      <TextSkeleton />;
+    }
+  };
 
   return (
-    <div className="text-white flex flex-col items-center gap-6 mt-4">
-      {data.image ? (
-        <Image src={data.image} alt={data.title} width={500} height={300} />
-      ) : (
-        <div className="flex justify-center"></div>
+    <div className="text-white flex flex-col items-center gap-6 mt-4 w-[90%] max-w-[800px] m-auto pb-10">
+      <div className="flex flex-col sm:flex-row justify-between w-full">
+        {renderText(data?.title, "heading")}
+        {renderText(data?.runtime, "minutes")}
+      </div>
+      {renderImage(data?.image, data?.title)}
+      <div className="self-start w-[90%]">
+        <p className="font-semibold text-2xl text-center sm:text-start">
+          Overview
+        </p>
+        <div className="text-center sm:text-start">
+          {renderText(data?.overview)}
+        </div>
+      </div>
+
+      {data?.crew && data?.crew.length > 1 && (
+        <div className="w-full text-center sm:text-start">
+          {renderText("Crew", "heading")}
+          <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center mt-2">
+            {data.crew.map((crew, index) => (
+              <MemberCard member={crew} key={index} />
+            ))}
+          </div>
+        </div>
       )}
-      <div className="flex gap-4 ">
-        <div className="bg-slate-500 rounded-md p-4 text-center">
-          <p className="text-zinc-400 font-semibold text-xl">Title</p>
-          <h1>{data.title}</h1>
+
+      {data?.guest_stars && data?.guest_stars.length > 1 && (
+        <div className="w-full text-center sm:text-start">
+          {renderText("Cast", "heading")}
+          <div className="flex flex-wrap justify-center sm:justify-start gap-4 items-center mt-2">
+            {data.guest_stars.map((crew, index) => (
+              <MemberCard member={crew} key={index} />
+            ))}
+          </div>
         </div>
-        <div className="bg-slate-500 rounded-md p-4 text-center">
-          <p className="text-zinc-400 font-semibold text-xl">Runtime</p>
-          <h1>{data.runtime ? data.runtime : <TextSkeleton />}</h1>
-        </div>
-      </div>
-      <div className="self-start w-[90%] ml-8">
-        <p className="font-semibold text-2xl">Overview</p>
-        {data.overview === "" ? (
-          <TextSkeleton />
-        ) : (
-          <>
-            <p>{data.overview}</p>
-          </>
-        )}
-      </div>
+      )}
     </div>
   );
 };
