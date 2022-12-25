@@ -34,9 +34,9 @@ export const Nav: FunctionComponent = () => {
   };
 
   return (
-    <nav className="pt-8 px-8">
+    <nav className="pt-8 px-4 sm:px-8">
       {selectedScreen !== "shows" && (
-        <div className="flex text-white gap-2 text-xl">
+        <div className="flex flex-col sm:flex-row items-start text-white gap-2 text-xl">
           {selectedShow.id !== 0 && (
             <button onClick={() => handleGoToShows()}>
               {selectedShow.title}
