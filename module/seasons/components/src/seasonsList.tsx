@@ -2,7 +2,7 @@ import { FromTheTopAnimation } from "../../../../common/animations";
 import { useShow } from "../../../../common/hooks/useShow";
 import { SeasonCard } from "./seasonCard";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
-import { Grid } from "../../../../common/components/grid";
+import { Grid } from "../../../../common/components";
 import { useGetSeasons } from "../../api/seasons.api";
 
 export const SeasonList = () => {

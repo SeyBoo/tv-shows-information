@@ -2,7 +2,7 @@ import Head from "next/head";
 import { FunctionComponent } from "react";
 import { useAppSelector } from "../common/hooks/store";
 import ShowProvider, { useShow } from "../common/hooks/useShow";
-import { Nav } from "../common/components/nav";
+import { Nav } from "../common/components";
 import { SelectedShowScreen, SelectShowScreen } from "../module/show/screens";
 import { SeasonScreen } from "../module/seasons/screens";
 import { EpisodeDataScreen, EpisodesScreen } from "../module/episode/screens";

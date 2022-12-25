@@ -1,6 +1,6 @@
 import { FunctionComponent } from "react";
 import { ZoomInAnimation } from "../../../../common/animations";
-import { Grid } from "../../../../common/components/grid";
+import { Grid } from "../../../../common/components";
 import { useAppSelector } from "../../../../common/hooks/store";
 import calculateDelay from "../../../../common/utils/calculateAnimationDelay";
 import { ShowCard } from "./showCard";

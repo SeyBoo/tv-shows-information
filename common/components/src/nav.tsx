@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { useShow } from "../hooks/useShow";
+import { useShow } from "../../hooks/useShow";
 
 export const Nav: FunctionComponent = () => {
   const {
