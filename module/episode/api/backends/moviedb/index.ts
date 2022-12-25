@@ -13,7 +13,7 @@ export default class MovieDBEpisodesBackend implements EpisodesBackend {
 
     return {
       id: episode.id,
-      image: imagePathUrl + episode.still_path,
+      image: episode.still_path ? imagePathUrl + episode.still_path : null,
       title: episode.name,
       episodeNumber: episode.episode_number,
       overview: episode.overview,

@@ -10,7 +10,7 @@ export default class MovieDBSeason implements SeasonBackend {
 
     return {
       id: season.id,
-      image: imagePathUrl + season.poster_path,
+      image: season.poster_path ? imagePathUrl + season.poster_path : null,
       name: season.name,
       season_number: season.season_number,
     };

@@ -1,10 +1,10 @@
 export interface Episode {
-  image: string;
+  image: string | null;
   title: string;
   episodeNumber: number;
   id: number;
-  overview: string | null;
-  runtime: number;
+  overview: string;
+  runtime: number | null;
 }
 
 export interface FetchEpisodesProps {
